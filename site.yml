@@ -11,8 +11,8 @@
   - name: install python binding for selinux
     yum: name={{item}} state=present
     with_items:
-    -libselinux-python
-    -libselmanage-python
+    - libselinux-python
+    - libselmanage-python
 
   - name: test to see if selinux is running
     command: getenforce
