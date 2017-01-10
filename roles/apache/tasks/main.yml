@@ -1,0 +1,14 @@
+---
+- name: install apache
+  yum: name=httpd state=present
+
+- name: create site directories
+  file: path={{item}} state=directory
+  with_items: "{{apache dirs}}"
+
+- name: copy httpd conf
+  template: src=https.conf-{{ansibe_os_family}}.j2 dest={{apache config}}
+  notify: restart apache
+
+- name: test to see if apache is running
+  service: name=httpd state=started enabled=yes
