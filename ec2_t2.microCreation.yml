@@ -1,0 +1,23 @@
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+    - name: Provision a set of instance(s)
+      ec2:
+         aws_access_key:
+         aws_secret_key:
+         key_name:
+         group_id:
+         instance_type:
+         image:
+         wait: true
+         region:
+         exact_count:
+         count_tag:
+            Count:
+         instance_tags:
+            Name:
+            Count:
+      register: ec2
